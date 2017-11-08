@@ -1,0 +1,52 @@
+package Odev;
+import java.util.Scanner;
+
+public class IBW {
+	int weight;
+	int height;
+    static int meter2feet(int height) {
+    	  int meters = height*32/10;
+    	  return meters;
+    }
+	static void idealbodyweightforfemale(int weight, int height) {
+	
+		int idw1= weight+ 2*meter2feet(height);
+		
+     System.out.println("IBW FOR FEMALE is"+ idw1);		
+	
+	}
+	static void idealbodyweightformale(int weight, int height) {
+		
+		int idw2= weight+ 2*meter2feet(height);
+		
+     System.out.println("IBW FOR MALE is"+ idw2);
+     }		
+	
+	public static void main(String[] args) {
+
+		
+		
+		Scanner input = new Scanner(System.in);
+		char gender = 'o';
+		System.out.print("are you female or male?('f' or 'm') ");
+		gender = input.next().charAt(0);
+		
+		if(gender=='f') { 
+
+			  System.out.println ("your height?");
+			  int height = input.nextInt();
+			System.out.print("weight?");
+			int weight = input.nextInt();
+			idealbodyweightforfemale(weight,height);
+			
+			
+		}else if(gender=='m') {
+			System.out.println ("your height? ");
+			  int height = input.nextInt();
+			System.out.print("weight gir");
+			int weight = input.nextInt();
+			idealbodyweightformale(weight, height);	
+		}
+	}
+
+}
