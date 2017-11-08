@@ -1,0 +1,84 @@
+package Rumeysa;
+import java.util.Scanner;
+
+public class ComplexFigureDrawer {
+
+	/**
+	 * 
+	 * The purpose of this program is to draw complex figures automatically
+	 * by using nested for loops. 
+	 * 
+	 * It is a dynamic program in which the user can specify the number of lines.
+	 * Note that the number of lines should be an even number in order to obtain this pattern. 
+	 * 
+	 * The do/while loop is used to draw multiple figures in one run. 
+	 * The program (do/while loop) terminates when the user enter -1 as a sentinel value.  
+	 * 
+	 * */
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		// get the number of lines to draw in the figure from the user
+		System.out.println("Please enter an even number for the number lines in the figure: ");
+		int nLines = input.nextInt();
+	
+		do { 
+			
+			// this for loop and the two print statements print the first line of the figure			
+			System.out.print("#");
+			for (int i = 0; i < (nLines)*2  ; i++)
+				System.out.print("=");
+			System.out.println("#");
+			//here begins my code
+			
+			for( int k=0; k<(nLines)/2;k++) {
+				System.out.print("|");
+			
+				for (int bosluk=0; bosluk < (k*-2) + (nLines/2)*2 ; bosluk++) {
+					System.out.print(" ");}
+				System.out.print("<>");
+				for(int nokta= 0; nokta < k*4 -4; nokta++) {
+					System.out.print(".");}
+				System.out.print("<>");
+				for(int bosluk=0; bosluk < (k*-2) + (nLines/2)*2; bosluk++)
+				{ System.out.print(" ");}
+				System.out.print("|");
+				}
+			 
+			
+			//aşağıyı yapçaz
+			for( int k=nLines/2; k<0 ;k--) {
+				System.out.print("|");
+			
+				for (int bosluk=0; bosluk < (k*-2) + (nLines/2)*2 ; bosluk++) {
+					System.out.print(" ");}
+				System.out.print("<>");
+				for(int nokta= 0; nokta < k*4 -4; nokta++) {
+					System.out.print(".");}
+				System.out.print("<>");
+				for(int bosluk=0; bosluk < (k*-2) + (nLines/2)*2; bosluk++)
+				{ System.out.print(" ");}
+				System.out.print("|");
+				}
+		    
+
+			// this for loop and the two print statements print the last line of the figure
+			System.out.print("#");
+			for (int i = 0; i < (nLines-2)*2; i++)
+				System.out.print("=");
+			System.out.println("#");
+			
+			
+			
+			// get the number of lines in the figure from the user
+			System.out.println("Please enter an even number for the number lines in the figure: ");
+			nLines = input.nextInt();
+			
+			
+		} while(nLines != -1);  // when the user enter input -1, exit the do/while loop 
+	
+		System.out.println("Thank you very much for using this program. See you later!");
+	}
+
+}
