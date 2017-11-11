@@ -1,0 +1,42 @@
+Scanner scan=new Scanner(System.in);
+        int k=0,t=0,tut = 0,tut2 = 0,e=0;
+        System.out.print("Anahtarı Giriniz:");
+        String anahtar=scan.nextLine();
+        System.out.print("Şifrelenecek Metni Giriniz:");
+        String girdi=scan.nextLine();
+        char []alfabe=new char [26];
+        char [][]tablo=new char [26][26];
+        char[]sifreli=new char [9999];
+        System.out.println("TABLO \n");
+        for (int i = 65; i <91; i++) {//büyük harfler harfler dizisine atıldı.
+            alfabe[k]=(char)i;
+            k++;
+            
+        }
+        for (int i = 0; i < 26; i++) {//vigenere tablosu oluşturma 
+            System.out.println("");
+            for (int j = 0; j < 26; j++) {
+                t=t%26;
+                tablo[i][j]=alfabe[t];
+                t++;
+                System.out.print(tablo[i][j]+ " ");
+            }
+            t++;
+        }
+        System.out.println("\n\nşifreli hali");
+       
+            for (int j = 0; j < girdi.length(); j++) {//Şifreleme Yaptığımız Bölüm
+                for (int l = 0; l < 26; l++) {
+                 if(alfabe[l]==anahtar.charAt(j%(anahtar.length()))){
+                     tut=l;
+                 }
+                   if(alfabe[l]==girdi.charAt(j%26)){
+                     tut2=l;
+                 }
+                }
+                
+                
+                System.out.print(tablo[tut][tut2]);   
+
+            }
+            System.out.println("");
