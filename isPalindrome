@@ -1,0 +1,16 @@
+// Returns true if the given string reads the same
+// forwards as backwards.
+// Trivially true for empty or 1-letter strings.
+public static boolean isPalindrome(String s) {
+if (s.length() < 2) {
+return true; // base case
+} else {
+char first = s.charAt(0);
+char last = s.charAt(s.length() - 1);
+if (first != last) {
+return false;
+} // recursive case
+String middle = s.substring(1, s.length() - 1);
+return isPalindrome(middle);
+}
+}
