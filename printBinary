@@ -1,0 +1,12 @@
+// Prints the given integer's binary representation.
+// Precondition: n >= 0
+public static void printBinary(int n) {
+if (n < 2) {
+// base case; same as base 10
+System.out.println(n);
+} else {
+// recursive case; break number apart
+printBinary(n / 2);
+printBinary(n % 2);
+}
+}
