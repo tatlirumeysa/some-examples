@@ -1,0 +1,77 @@
+import java.util.Scanner;
+// In this example we calculated the density of metals and decided to what they are.
+// Rumeysa Tatli
+public class MetalTest {
+
+	// Densities in gr / cm3
+	public static final double ALUMINUM_DENSITY = 2.70; // Al
+	public static final double COPPER_DENSITY = 8.96; // Cu
+	public static final double GOLD_DENSITY = 19.3; // Au
+	public static final double IRON_DENSITY = 7.87; // Fe
+	public static final double SILVER_DENSITY = 10.5; // Ag
+
+	public static final double ERROR_TOLERANCE = 0.5;
+
+	public static void main(String[] args) {
+
+		metalTest("2472,43  1,0  100,0"); // Fe
+		metalTest("6192,0  	2,0  8,0  20,0"); // Au
+		metalTest("288,9   3,0"); // Ag
+		metalTest("64,08   0,5  30"); // Al
+		metalTest("560,0   0,1  25,0  25,0"); // Cu
+		metalTest("999,0   4,0"); // Unknown
+	}
+
+	public static void metalTest(String input) {
+
+		Scanner console = new Scanner(input);
+		double tempDensity;
+		double mass;
+		double x;
+		double y = 0.0;
+		double z;
+		mass = console.nextDouble();
+		x = console.nextDouble();
+		tempDensity = mass / cubeVolume(x);
+		if (console.hasNext()) {
+			y = console.nextDouble();
+			tempDensity = mass / cylinderVolume(x, y);
+		}
+		if (console.hasNext()) {
+			z = console.nextDouble();
+			tempDensity = mass / rectangularPrismVolume(x, y, z);
+		}
+
+		String metal = density2metal(tempDensity);
+		System.out.println("This metal is " + metal);
+
+	}
+
+	public static double cylinderVolume(double r, double h) {
+		return Math.PI * r * r * h;
+	}
+
+	public static double cubeVolume(double x) {
+		return x * x * x;
+	}
+
+	public static double rectangularPrismVolume(double x, double y, double z) {
+		return x * y * z;
+	}
+
+	public static String density2metal(double density) {
+		if (Math.abs(density - ALUMINUM_DENSITY) < ERROR_TOLERANCE) {
+			return "ALIMINUM";
+		} else if (Math.abs(density - COPPER_DENSITY) < ERROR_TOLERANCE) {
+			return "COPPER";
+		} else if (Math.abs(density - GOLD_DENSITY) < ERROR_TOLERANCE) {
+			return "GOLD";
+		} else if (Math.abs(density - IRON_DENSITY) < ERROR_TOLERANCE) {
+			return "IRON";
+		} else if (Math.abs(density - SILVER_DENSITY) < ERROR_TOLERANCE) {
+			return "SILVER";
+		} else
+			return "UNKNOWN";
+	}
+
+}
