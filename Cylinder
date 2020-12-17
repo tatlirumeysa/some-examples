@@ -1,0 +1,37 @@
+#include "stdafx.h"
+/* this program will calculate a cylinder's volume, area, and circle area in class
+also our circle area funtion must be private and print the results on the screen */
+class Cylinder {
+    public:
+  Float R;
+  Float H;
+  
+  private:
+  float circ_area(void){
+  float ret;
+  ret = 3.14*R*R;
+  return ret;
+  }
+  
+  public:
+  float volume(void){
+  float ret;
+  ret = circ_area()*H;
+  return ret;
+  }
+  
+  float area(void){
+  float ret;
+  ret = 2*3.14*H+2*circ_area();
+  return ret;
+  }
+  };
+ void main(void){
+ 
+    Cylinder X;
+  printf("%s", " pls give radius and height of our cylinder");  
+  scanf("%f  %f" ,&X.R,&X.H);
+      float area = X.area();
+      float volume = X.volume();
+      printf("%f  %f", area, volume);
+      }
